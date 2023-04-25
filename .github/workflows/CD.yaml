@@ -1,0 +1,9 @@
+name: 2nd-CD
+
+on: [push]
+
+jobs:
+  continous-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "WiP"
