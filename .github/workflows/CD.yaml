@@ -3,7 +3,16 @@ name: 2nd-CD
 on: [push]
 
 jobs:
-  continous-deployment:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "WiP"
+    - uses: actions/checkout@v3
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "."
+        target: "/var/www/html"
